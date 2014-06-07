@@ -1,4 +1,4 @@
-![Alt text](https://angularjs.org/img/AngularJS-large.png)
+![AngularJS](https://angularjs.org/img/AngularJS-large.png)
 
 Codigo del curso de AngularJS
 =============================
