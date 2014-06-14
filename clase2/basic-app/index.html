@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
+    </head>
+
+
+    <body ng-app="curso2Angular">
+
+        <h1>Clase 2 - Binding</h1>
+
+        <div ng-controller="twoWayDataBindingController">
+            
+            <fieldset>
+                <legend>Simple binding</legend>
+                <input type="text" ng-model="variableBind">
+                <p>Hola {{variableBind}}</p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Datos personales</legend>
+                <label for="cedula">C&eacute;dula</label>
+                <input type="text" id="cedula" ng-model="datos.cedula">
+                <br>
+
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" ng-model="datos.nombre">
+                <br>
+
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" ng-model="datos.apellido">
+                <br>
+
+                <label for="direccion">Direcci&oacute;n</label>
+                <input type="text" id="direccion" ng-model="datos.direccion">
+                <br>
+
+                <input type="button" ng-click="showData()" value="Show!">
+            </fieldset>
+
+            <p>{{datos}}</p>
+
+        </div>
+
+        <script src="js/main.js"></script>
+
+    </body>
+</html>
