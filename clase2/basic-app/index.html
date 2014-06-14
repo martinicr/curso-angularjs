@@ -14,49 +14,110 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
     </head>
 
 
-    <body ng-app="curso2Angular">
+    <body ng-app="curso2Angular" role="document">
 
-        <h1>Clase 2 - Binding</h1>
+        <div class="container theme-showcase" role="main">
+            <div class="jumbotron">
+                <h1>Clase 2 - Binding</h1>
+            </div>
 
-        <div ng-controller="twoWayDataBindingController">
-            
-            <fieldset>
-                <legend>Simple binding</legend>
-                <input type="text" ng-model="variableBind">
-                <p>Hola {{variableBind}}</p>
-            </fieldset>
 
-            <fieldset>
-                <legend>Datos personales</legend>
-                <label for="cedula">C&eacute;dula</label>
-                <input type="text" id="cedula" ng-model="datos.cedula">
+            <div ng-controller="twoWayDataBindingController">
+                
+                <fieldset>
+                    <legend>Simple binding</legend>
+                    <input type="text" ng-model="variableBind">
+                    <p>Hola {{variableBind}}</p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Datos personales</legend>
+                    <label for="cedula">C&eacute;dula</label>
+                    <input type="text" id="cedula" ng-model="usuario.cedula" placeholder="Cedula">
+                    <br>
+
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" ng-model="usuario.nombre" placeholder="Nombre">
+                    <br>
+
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" ng-model="usuario.apellido" placeholder="Apellido">
+                    <br>
+
+                    <label for="direccion">Direcci&oacute;n</label>
+                    <input type="text" id="direccion" ng-model="usuario.direccion" placeholder="Direccion">
+                    <br>
+
+                    <input type="button" ng-click="guardar(usuario)" value="Guardar" class="btn btn-lg btn-primary">
+                </fieldset>
+
+                <div ng-show="showSuccess" class="alert alert-success">
+                    <p>Usuario guardado satisfactorimente</p>
+                    <a href="#" ng-click="closeSuccessMessage()" class="alert-link">Cerrar</a>
+                </div>
+                
+
+                <input type="text" ng-model="q" placeholder="filtrar por...">
                 <br>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Usuarios</div>
 
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" ng-model="datos.nombre">
-                <br>
+                    <table class="table">
+                        <thead>
+                            <th>C&eacute;dula</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Direcci&oacute;n</th>
+                            <th>Editar</th>
+                        </thead>
+                        <tbody ng-repeat="usuario in usuarios | filter:q">
+                            <td>{{usuario.cedula}}</td>
+                            <td>{{usuario.nombre}}</td>
+                            <td>{{usuario.apellido}}</td>
+                            <td>{{usuario.direccion}}</td>
+                            <th><a href="#" ng-click="eliminarUsuario(usuario)">Eliminar</a></th>
+                        </tbody>
+                    </table>
+                </div>
 
-                <label for="apellido">Apellido</label>
-                <input type="text" id="apellido" ng-model="datos.apellido">
-                <br>
+            </div>
 
-                <label for="direccion">Direcci&oacute;n</label>
-                <input type="text" id="direccion" ng-model="datos.direccion">
-                <br>
+            <div ng-controller="calculadoraController">
+                <fieldset>
+                    <legend>Calculadora</legend>
+                    
+                        <label for="numero1">N&uacute;mero 1</label>
+                        <input type="text" id="numero1" ng-model="numero1">
+                        <br>
 
-                <input type="button" ng-click="showData()" value="Show!">
-            </fieldset>
+                        <label for="numero2">N&uacutemero 2</label>
+                        <input type="text" id="numero2" ng-model="numero2">
+                        <br>
 
-            <p>{{datos}}</p>
+                        <input type="button" ng-click="sumar()" value="Sumar" class="btn btn-lg btn-primary">
+                        <input type="button" ng-click="multiplicar()" value="Multiplicar" class="btn btn-lg btn-primary">
+                </fieldset>
+
+                <p>
+                    Suma = {{resultadoSuma}} 
+                    <br>
+                    Multiplicacion = {{resultadoMultiplicacion}}
+                </p>
+            </div>
+
 
         </div>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script src="js/main.js"></script>
 
     </body>
